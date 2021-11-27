@@ -1,7 +1,10 @@
 __all__ = ["create_server"]
 
+from secrets import token_urlsafe
+
 from fastapi.applications import FastAPI
 from fastapi.staticfiles import StaticFiles
+from starlette.middleware.sessions import SessionMiddleware
 
 from watch_n_learn.router.error import error_router
 from watch_n_learn.router.get.guest import guest_get_router
@@ -9,6 +12,8 @@ from watch_n_learn.router.get.guest import guest_get_router
 def create_server(debug__: bool) -> FastAPI:
 
     server = FastAPI(debug=debug__)
+
+    server.add_middleware(SessionMiddleware, secret_key=token_urlsafe())
 
     @server.head("/ping")
     def ping() -> None:
