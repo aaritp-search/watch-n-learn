@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+
+        <link rel="icon" href="/static/image/favicon.ico" type="image/x-icon">
+
+        {% block title %}
+        {% endblock title %}
+
+    </head>
+
+    <body>
+
+        <header>
+            <a href="/">Home</a>
+            <a href="/sign-up">Sign up</a>
+            <a href="/login">Login</a>
+        </header>
+
+        {% block main %}
+        {% endblock main %}
+
+    </body>
+
+</html>
