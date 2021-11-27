@@ -1,3 +1,5 @@
+/database.*
+
 /venv/
 
 __pycache__/

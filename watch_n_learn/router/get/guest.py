@@ -10,3 +10,8 @@ guest_get_router = APIRouter()
 def index(request_: Request) -> HTMLResponse:
 
     return TEMPLATE.TemplateResponse("guest/index.jinja2", {"request": request_})
+
+@guest_get_router.get("/sign-up")
+def sign_up(request_: Request) -> HTMLResponse:
+
+    return TEMPLATE.TemplateResponse("guest/sign_up.jinja2", {"request": request_})
