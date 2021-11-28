@@ -6,6 +6,8 @@
 
         <link rel="icon" href="/static/image/favicon.ico" type="image/x-icon">
 
+        <script src="/static/javascript/base.js"></script>
+
         {% block title %}
         {% endblock title %}
 
@@ -14,9 +16,23 @@
     <body>
 
         <header>
-            <a href="/">Home</a>
-            <a href="/sign-up">Sign up</a>
-            <a href="/login">Login</a>
+            <nav>
+                <a href="/">Home</a>
+                <a href="/sign-up">Sign up</a>
+                <a href="/login">Login</a>
+                <a href="/internal/logout">Logout</a>
+            </nav>
+                {% if user %}
+                    <p>
+                        {{ user.username }}
+                    </p>
+                {% endif %}
+            {% for message in get_flashed_messages(request) %}
+                <p>
+                    {{ message }}
+                    <span onclick="removeParent(this);">[-]</span>
+                </p>
+            {% endfor %}
         </header>
 
         {% block main %}

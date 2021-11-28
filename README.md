@@ -11,6 +11,13 @@
 <ul>
     <li>
         <p>
+            Use 'body_to_json' instead of Starlette's
+            <a href="https://git.io/JMG9h">'async Request.json()'</a>
+            (incorrect)
+        </p>
+    </li>
+    <li>
+        <p>
             Use
             <a href="https://ngrok.com">ngrok</a>
             (https) for local development
