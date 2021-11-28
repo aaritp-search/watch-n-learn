@@ -18,15 +18,13 @@
         <header>
             <nav>
                 <a href="/">Home</a>
-                <a href="/sign-up">Sign up</a>
-                <a href="/login">Login</a>
-                <a href="/internal/logout">Logout</a>
-            </nav>
-                {% if user %}
-                    <p>
-                        {{ user.username }}
-                    </p>
+                {% if user is defined() %}
+                    <a href="/internal/logout">Logout</a>
+                {% else %}
+                    <a href="/sign-up">Sign up</a>
+                    <a href="/login">Log in</a>
                 {% endif %}
+            </nav>
             {% for message in get_flashed_messages(request) %}
                 <p>
                     {{ message }}

@@ -36,11 +36,11 @@ async def login(request_: Request) -> RedirectResponse:
 
         return RedirectResponse("/login", status.HTTP_302_FOUND)
 
-    flash(request_, "Logged in")
-
     response = RedirectResponse("/", status.HTTP_302_FOUND)
 
     response.set_cookie("authentication_token", manager.create_access_token(data={"sub": username}))
+
+    flash(request_, "Logged in")
 
     return response
 
@@ -69,6 +69,12 @@ async def sign_up(request_: Request) -> RedirectResponse:
 
     session.expire(user)
 
-    flash(request_, "Signed up")
+    response = RedirectResponse("/", status.HTTP_302_FOUND)
 
-    return RedirectResponse("/", status.HTTP_302_FOUND)
+    response.set_cookie(
+        "authentication_token", manager.create_access_token(data={"sub": username_})
+    )
+
+    flash(request_, "Signed up and logged in")
+
+    return response
