@@ -21,6 +21,11 @@
                 <a href="/sign-up">Sign up</a>
                 <a href="/login">Login</a>
             </nav>
+                {% if user %}
+                    <p>
+                        {{ user.username }}
+                    </p>
+                {% endif %}
             {% for message in get_flashed_messages(request) %}
                 <p>
                     {{ message }}

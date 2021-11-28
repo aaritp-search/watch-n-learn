@@ -14,7 +14,7 @@ from watch_n_learn.router.post.guest import guest_post_router
 
 def create_server(debug__: bool) -> FastAPI:
 
-    Base.metadata.create_all(bind=engine)
+    Base.metadata.create_all(engine)
 
     server = FastAPI(debug=debug__)
 

@@ -3,7 +3,7 @@ from fastapi.requests import Request
 from fastapi.responses import HTMLResponse
 from fastapi.routing import APIRouter
 
-from watch_n_learn.helper.constant import TEMPLATE
+from watch_n_learn.helper.template import TEMPLATE
 
 error_router = APIRouter()
 

@@ -11,10 +11,8 @@
 <ul>
     <li>
         <p>
-            Use 'body_to_json'
-            <a href="https://git.io/JMZsk">(here)</a>
-            instead of Starlette's
-            <a href="https://git.io/JMG9h">'Request.json()'</a>
+            Use 'body_to_json' instead of Starlette's
+            <a href="https://git.io/JMG9h">'async Request.json()'</a>
             (incorrect)
         </p>
     </li>

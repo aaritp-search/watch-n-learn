@@ -8,7 +8,7 @@ class User(Base):
 
     __tablename__ = "User"
 
-    id_ = Column("UserId", Integer, primary_key=True)
+    id_ = Column("UserID", Integer, primary_key=True)
 
     username = Column("Username", String, unique=True)
 
