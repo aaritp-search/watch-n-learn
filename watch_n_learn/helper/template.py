@@ -9,7 +9,7 @@ FLASHED_MESSAGE = Namespace().signal("flashed_message")
 
 TEMPLATE = Jinja2Templates("watch_n_learn/template")
 
-request_context = ContextVar("request_context")
+request_context = ContextVar("request_context", default=None)
 
 def flash(request__: Request, message_: str) -> None:
 
@@ -23,7 +23,7 @@ def flash(request__: Request, message_: str) -> None:
 
 def get_flashed_messages(request_: Request) -> List[int]:
 
-    flashes = request_context.get(None)
+    flashes = request_context.get()
 
     if flashes is None:
         flashes = request_.session.pop("_flashes") if "_flashes" in request_.session else []

@@ -11,11 +11,27 @@
     <main>
         <h1>Sign up page</h1>
         <form action="/internal/sign-up" method="post">
-            <label for="username">Username:</label>
-            <input id="username" name="username">
+            <label for="name">Full name:</label>
             <br>
-            <label for="password">Password:</label>
-            <input id="password" name="password" type="password">
+            <input id="name" name="name" placeholder="e.g. Brian Law">
+            <br>
+            <br>
+            <label for="username">Username (6 - 16 characters):</label>
+            <br>
+            <input id="username" name="username" placeholder="e.g. brianlaw">
+            <br>
+            <br>
+            <label for="password">Password (6 - 16 characters):</label>
+            <br>
+            <input id="password" name="password" type="password" placeholder="********">
+            <br>
+            <br>
+            <label for="confirm_password">Confirm password:</label>
+            <br>
+            <input
+                id="confirm_password" name="confirm_password" type="password" placeholder="********"
+            >
+            <br>
             <br>
             <input type="submit" value="Sign up">
         </form>

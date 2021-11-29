@@ -2,7 +2,9 @@ aiofiles==0.7.0
 anyio==3.4.0
 asgiref==3.4.1
 astroid==2.9.0
+bcrypt==3.2.0
 blinker==1.4
+cffi==1.15.0
 click==8.0.3
 fastapi==0.70.0
 fastapi-login==1.7.3
@@ -18,10 +20,12 @@ mccabe==0.6.1
 passlib==1.7.4
 pip==21.3.1
 platformdirs==2.4.0
+pycparser==2.21
 pydantic==1.8.2
 PyJWT==2.3.0
 pylint==2.12.1
 setuptools==57.4.0
+six==1.16.0
 sniffio==1.2.0
 SQLAlchemy==1.4.27
 starlette==0.16.0

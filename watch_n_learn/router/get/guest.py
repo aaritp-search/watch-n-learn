@@ -40,7 +40,8 @@ async def logout(request_: Request) -> RedirectResponse:
 
     if authentication is not False:
         response.delete_cookie("authentication_token")
-        flash(request_, "Logged out")
+        if isinstance(authentication, User):
+            flash(request_, "Logged out")
 
     return response
 
@@ -50,7 +51,6 @@ async def login(request_: Request) -> Union[HTMLResponse, RedirectResponse]:
     authentication = await get_authentication(request_)
 
     if isinstance(authentication, User):
-        flash(request_, "You are logged in")
 
         return RedirectResponse("/", status.HTTP_302_FOUND)
 
@@ -67,7 +67,6 @@ async def sign_up(request_: Request) -> Union[HTMLResponse, RedirectResponse]:
     authentication = await get_authentication(request_)
 
     if isinstance(authentication, User):
-        flash(request_, "You are logged in")
 
         return RedirectResponse("/", status.HTTP_302_FOUND)
 

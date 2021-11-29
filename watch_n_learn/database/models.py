@@ -10,6 +10,8 @@ class User(Base):
 
     id_ = Column("UserID", Integer, primary_key=True)
 
+    name = Column("Name", String)
+
     username = Column("Username", String, unique=True)
 
-    password = Column("Password", String)
+    hashed_password = Column("HashedPassword", String)
