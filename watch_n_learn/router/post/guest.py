@@ -129,6 +129,6 @@ async def sign_up(request_: Request) -> RedirectResponse:
         "authentication_token", manager.create_access_token(data={"sub": username_})
     )
 
-    flash(request_, "You have signed up")
+    flash(request_, "You have signed up! Welcome to the Watch N Learn community!")
 
     return response
