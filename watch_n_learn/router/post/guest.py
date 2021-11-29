@@ -16,33 +16,34 @@ guest_post_router = APIRouter(prefix="/internal")
 async def login(request_: Request) -> RedirectResponse:
 
     data = body_to_json(await request_.body(), ["username", "password"])
+    requests = 0
+    while requests < 3:
+        if data is None:
+            flash(request_, "Invalid request")
 
-    if data is None:
-        flash(request_, "Invalid request")
+            return RedirectResponse("/login", status.HTTP_302_FOUND)
 
-        return RedirectResponse("/login", status.HTTP_302_FOUND)
+        username = data["username"]
 
-    username = data["username"]
+        user = get_user(username)
 
-    user = get_user(username)
+        if user is None:
+            flash(request_, "Invalid username")
 
-    if user is None:
-        flash(request_, "Invalid username")
+            return RedirectResponse("/login", status.HTTP_302_FOUND)
 
-        return RedirectResponse("/login", status.HTTP_302_FOUND)
+        if data["password"] != user.password:
+            flash(request_, "Invalid password")
 
-    if data["password"] != user.password:
-        flash(request_, "Invalid password")
+            return RedirectResponse("/login", status.HTTP_302_FOUND)
 
-        return RedirectResponse("/login", status.HTTP_302_FOUND)
+        flash(request_, "Logged in")
 
-    flash(request_, "Logged in")
+        response = RedirectResponse("/", status.HTTP_302_FOUND)
 
-    response = RedirectResponse("/", status.HTTP_302_FOUND)
+        response.set_cookie("authentication_token", manager.create_access_token(data={"sub": username}))
 
-    response.set_cookie("authentication_token", manager.create_access_token(data={"sub": username}))
-
-    return response
+        return response
 
 @guest_post_router.post("/sign-up")
 async def sign_up(request_: Request) -> RedirectResponse:
