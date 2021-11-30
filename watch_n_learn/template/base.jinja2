@@ -28,7 +28,7 @@
             {% for message in get_flashed_messages(request) %}
                 <p>
                     {{ message }}
-                    <span onclick="removeParent(this);">[-]</span>
+                    <span onclick="removeParent(this);">&times;</span>
                 </p>
             {% endfor %}
         </header>

@@ -16,7 +16,7 @@ def create_server(debug__: bool) -> FastAPI:
 
     Base.metadata.create_all(engine)
 
-    server = FastAPI(debug=debug__)
+    server = FastAPI(debug=debug__, openapi_url="/openapi.json" if debug__ else None)
 
     server.add_middleware(SessionMiddleware, secret_key=token_urlsafe())
 
