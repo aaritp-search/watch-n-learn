@@ -19,6 +19,9 @@
             <nav>
                 <a href="/">Home</a>
                 {% if user is defined() %}
+                    <a href="/internal/subjects">Subjects</a>
+                    <a href="internal/community">Community</a>
+                    <a href="/internal/my_account">My Account</a>
                     <a href="/internal/logout">Logout</a>
                 {% else %}
                     <a href="/sign-up">Sign up</a>
