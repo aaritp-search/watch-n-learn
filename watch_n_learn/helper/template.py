@@ -21,7 +21,7 @@ def flash(request__: Request, message_: str) -> None:
 
     FLASHED_MESSAGE.send(id(flash), message=message_)
 
-def get_flashed_messages(request_: Request) -> List[int]:
+def get_flashed_messages(request_: Request) -> List[str]:
 
     flashes = request_context.get()
 

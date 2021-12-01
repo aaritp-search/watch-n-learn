@@ -1,19 +1,24 @@
 from typing import Dict
 from typing import List
-from typing import Optional
+from typing import Union
 from urllib.parse import parse_qs
 
-def body_to_json(body_: bytes, parameter_list_: List[str]) -> Optional[Dict]:
+from fastapi.requests import Request
 
-    parsed_body = parse_qs(body_.decode("utf-8"))
+async def body_to_json(request__: Request, parameters_: List[str]) -> Union[Dict[str, str], str]:
 
-    if list(parsed_body.keys()) != parameter_list_:
+    parsed_body = parse_qs((await request__.body()).decode("utf-8"), True)
 
-        return None
+    received_parameters = parsed_body.keys()
 
-    for value in parsed_body.values():
-        if len(value) != 1:
+    for parameter in parameters_:
+        if parameter not in received_parameters:
 
-            return None
+            return {}
 
-    return {parameter: value[0] for parameter, value in parsed_body.items()}
+    for parameter, value in parsed_body.items():
+        if not value[-1]:
+
+            return parameter
+
+    return {parameter: value[-1] for parameter, value in parsed_body.items()}

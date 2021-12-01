@@ -10,6 +10,6 @@ from watch_n_learn.database.models import User
 manager = LoginManager(token_urlsafe(), "/internal/login", default_expiry=timedelta(hours=2.0))
 
 @manager.user_loader()
-def get_user(username__: str) -> Optional[User]:
+def load_user(username__: str) -> Optional[User]:
 
     return session.query(User).filter_by(username=username__).first()
