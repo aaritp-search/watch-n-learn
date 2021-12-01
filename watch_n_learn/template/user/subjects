@@ -1,0 +1,25 @@
+{% extends "base.jinja2" %}
+
+{% block title %}
+
+    <title>Subjects</title>
+
+{% endblock title %}
+
+{% block main %}
+
+    <main>
+        <h1>Available subjects</h1>
+        <dl>
+          <dt>Science</dt>
+          <dd>-Biology</dd>
+          <dd>-Chemistry</dd>
+          <dd>-Physics</dd>
+          <dt>Math</dt>
+          <dd>-Arithmetic</dd>
+          <dd>-Algebra</dd>
+          <dd>-Geometry</dd>
+        </dl>
+    </main>
+
+{% endblock main %}
